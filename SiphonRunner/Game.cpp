@@ -28,6 +28,8 @@ int Game::pollEvent() {
 				if (event.key.code == Keyboard::A) pipeline.addPipe();
 			}
 		}
+		pipeline.update();
+
 		window.clear();
 		pipeline.draw(window);
 		window.display();
