@@ -1,7 +1,9 @@
-#pragma once
+#ifndef PIPELINE_H
+#define PIPELINE_H
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
 
 using namespace sf;
 
@@ -10,11 +12,16 @@ public:
 	Pipeline(){};
 	void create();
 	void addPipe();
+	void update();
 	void draw(RenderWindow& gameWindow);
 private:
 	std::vector<RectangleShape> pipeline;
 	RectangleShape pipe;
+	RectangleShape pipeTurn;
 	float pipeAngle = 90.f;
-	float pipeHeight = 100.f;
-	const float pipeWidth = 20.f;
+	const float pipeHeight = 200.f;
+	const float pipeWidth = 100.f;
+	int index = 0;
 };
+
+#endif 
