@@ -13,7 +13,7 @@ int Game::gamePrologue() {
 	sprite_3.setTexture(art_3); sprite_3.setPosition(100.f, 50.f);
 	sprite_4.setTexture(art_4); sprite_4.setPosition(900.f, 50.f);
 	bool changePage = false;
-
+		
 	while (window.isOpen()) {
 		while (window.pollEvent(event)) {
 			if (Event::KeyPressed) {
@@ -85,7 +85,10 @@ int Game::buttonAbout() {
 	backgroundTexture.loadFromFile("Resources\\GameMenuBackground.png");
 	background.setTexture(backgroundTexture);
 	gameInfo.setFont(font);
-	gameInfo.setString("		 Specially for Stal'ni by Begemot.\n	   In this game you have to help Dakens\n	   pull the ___ out of the siphon.\nYou have to put your nose into the siphon and try to catch ___, while you moving along the siphon ways.");
+	gameInfo.setString(String("") + 
+					   String("") +
+					   String("") +
+					   String(""));
 	gameInfo.setPosition(800.f, 200.f);
 	gameInfo.setOrigin(gameInfo.getGlobalBounds().width / 2.f - 800.f, 0.f);
 	//gameInfo.setCharacterSize(12);

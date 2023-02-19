@@ -25,9 +25,10 @@ int Game::pollEvent() {
 			case Event::Closed: window.close();
 			case Event::KeyPressed:
 				if (event.key.code == Keyboard::Escape) gamePause();
-				if (event.key.code == Keyboard::A) pipeline.addPipe();
 			}
 		}
+		pipeline.update();
+
 		window.clear();
 		pipeline.draw(window);
 		window.display();

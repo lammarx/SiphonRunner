@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GAMEMENU_H
+#define GAMEMENU_H
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -61,3 +63,5 @@ public:
 	void initGameTitle();
 	void initGameBackground();
 };
+
+#endif

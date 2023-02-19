@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -9,9 +10,6 @@ using namespace sf;
 
 class Game {
 public:
-	Game() {
-
-	}
 	int pollEvent();
 private:
 	// SFML Classes
@@ -28,3 +26,5 @@ private:
 	int buttonSettings();
 	int buttonAbout();
 };
+
+#endif
