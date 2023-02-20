@@ -18,6 +18,7 @@ private:
 	std::vector<RectangleShape> pipeline;
 	RectangleShape pipe;
 	RectangleShape pipeTurn;
+<<<<<<< HEAD
 	//float pipeAngle = 90.f;
 	const float pipeSize = 200.f;
 	int direction = 0;
@@ -26,3 +27,12 @@ private:
 };
 
 #endif 
+=======
+	float pipeAngle = 90.f;
+	const float pipeHeight = 200.f;
+	const float pipeWidth = 100.f;
+	int index = 0;
+};
+
+#endif 
+>>>>>>> c52ba3ce95426057f94c5443038e680b03e9cb88
