@@ -5,7 +5,7 @@ void Game::initWindow() {
 	videoMode.width = 1600;
 	videoMode.height = 900;
 	window.create(videoMode, "SiphonRunner");
-	window.getSettings();
+	window.setFramerateLimit(144);
 }
 
 int Game::pollEvent() {

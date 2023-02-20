@@ -123,7 +123,7 @@ void GameMenu::updateBackground() {
 		pipeline.erase(pipeline.begin());
 	}
 	
-	if (rand() > RAND_MAX - 100) {
+	if (rand() > RAND_MAX - 1000) {
 		sf::Vertex vertex;
 		vertex.color = sf::Color(255, 255, 255, 100);
 		vertex.position = pipeline[pipeline.size() - 1].position;
@@ -158,15 +158,15 @@ void GameMenu::updateBackground() {
 	}
 
 	if (pipeDirection == 0)
-		pipeline[pipeline.size() - 1].position.x += 2;
+		pipeline[pipeline.size() - 1].position.x += 20;
 	else if (pipeDirection == 1)
-		pipeline[pipeline.size() - 1].position.x -= 2;
+		pipeline[pipeline.size() - 1].position.x -= 20;
 	else if (pipeDirection == 2)
-		pipeline[pipeline.size() - 1].position.y += 2;
+		pipeline[pipeline.size() - 1].position.y += 20;
 	else if (pipeDirection == 3)
-		pipeline[pipeline.size() - 1].position.y -= 2;
+		pipeline[pipeline.size() - 1].position.y -= 20;
 
 	for (int i = 0; i < pipeline.size(); i++) {
-		pipeline[i].position.x -= 0.01f;
+		pipeline[i].position.x -= 0.25;
 	}
 }
