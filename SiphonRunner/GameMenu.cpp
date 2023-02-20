@@ -105,6 +105,7 @@ void GameMenu::initGameTitle() {
 void GameMenu::initGameBackground() {
 	gameMenuBackgroundTexture.loadFromFile("Resources\\GameMenuBackground.png");
 	gameMenuBackground.setTexture(gameMenuBackgroundTexture);
+
 	sf::Vertex vertex;
 	vertex.color = sf::Color(255, 255, 255, 100);
 
