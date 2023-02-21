@@ -2,34 +2,18 @@
 
 void Pipeline::create() {
 	pipe.setFillColor(Color(255, 255, 255, 100));
-<<<<<<< HEAD
 	pipe.setSize(Vector2f(pipeSize, pipeSize));
 	pipe.setPosition(800.f, 0.f);
 	pipeline.push_back(pipe);
 
 	pipeTurn.setSize(Vector2f(pipeSize, pipeSize));
-	//for (int i = 0; i < 10; i++) {
-	//	addPipe();
-	//}
-=======
-	pipe.setSize(Vector2f(pipeWidth, pipeHeight));
-	pipe.setPosition(800.f, 0.f);
-	//pipe.setOrigin(pipe.getSize().x / 2.f, 0.f);
-	pipeline.push_back(pipe);
-
-	pipeTurn.setSize(Vector2f(pipeWidth, pipeWidth));
-	//pipeTurn.setOrigin(pipeWidth / 2.f, 0.f);
 	for (int i = 0; i < 10; i++) {
 		addPipe();
 	}
->>>>>>> c52ba3ce95426057f94c5443038e680b03e9cb88
 }
 
-// SUPER GOVNOCODE RIGHT THERE:
 void Pipeline::addPipe() {
-<<<<<<< HEAD
 	index = rand() % 10;
-	
 	if (direction == 0) {
 		pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x, pipeline[pipeline.size() - 1].getPosition().y + pipeSize);
 	}
@@ -40,48 +24,17 @@ void Pipeline::addPipe() {
 		pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x - pipeSize, pipeline[pipeline.size() - 1].getPosition().y);
 	}
 	if (index > 5) {
-		direction = rand() % 2;
-	}
-	pipeline.push_back(pipe);
-=======
-	int lastIndex = index;
-	index = rand() % 3;
-	if (index == 0) { pipeAngle = 0.f; if (index == lastIndex) { index = rand() % 2 + 1; } }
-	else if (index == 1) { pipeAngle = 90.f; if (lastIndex == 2) { index = 2; } }
-	else if (index == 2) { pipeAngle = -90.f; if (lastIndex == 1) { index = 1; } }
-	else if (index == 3) { pipeAngle = 0.f; if (lastIndex != 0) { index = 0; if (index == lastIndex) { index = rand() % 2 + 1; } } }
-
-	if (index == 0) {
-		pipeTurn.setPosition(pipeline[pipeline.size() - 1].getPosition().x, pipeline[pipeline.size() - 1].getPosition().y + pipeline[pipeline.size() - 1].getSize().y);
-		pipeline.push_back(pipeTurn);
+		int temp = direction;
+		do { direction = rand() % 3; } while ((temp == 1 && direction == 2) || (temp == 2 && direction == 1) || (direction == temp));
+		pipe.setFillColor(Color(255, 255, 255, 255));
 	}
 	else {
-		pipe.setSize(Vector2f(pipe.getSize().y, pipe.getSize().x));
-		if (index == 1) {
-			pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x + pipeline[pipeline.size() - 1].getSize().x, pipeline[pipeline.size() - 1].getPosition().y);
-		}
-		else if (index == 2) {
-			pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x - pipe.getSize().x, pipeline[pipeline.size() - 1].getPosition().y);
-		}
-		else if (index == 3) {
-			pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x, pipeline[pipeline.size() - 1].getPosition().y);
-		}
-		pipeline.push_back(pipe);
+		pipe.setFillColor(Color(255, 255, 255, 100));
 	}
-}
 
-void Pipeline::update() {
-	for (int i = 0; i < pipeline.size(); i++) {
-		if (Keyboard::isKeyPressed(Keyboard::A)) { pipeline[i].move(0.1, 0.f); }
-		else if (Keyboard::isKeyPressed(Keyboard::S)) { pipeline[i].move(0.f, -0.1); }
-		else if (Keyboard::isKeyPressed(Keyboard::D)) { pipeline[i].move(-0.1, 0.f); }
-	}
-	if (pipeline[0].getPosition().y < -500.f) {
-		pipeline.erase(pipeline.begin());
-		addPipe();
-		std::cout << pipeline.size() << "\n";
-	}
->>>>>>> c52ba3ce95426057f94c5443038e680b03e9cb88
+	
+	
+	pipeline.push_back(pipe);
 }
 
 void Pipeline::update() {
@@ -90,11 +43,6 @@ void Pipeline::update() {
 		else if (Keyboard::isKeyPressed(Keyboard::A)) { pipeline[i].move(2.f, 0.f); }
 		else if (Keyboard::isKeyPressed(Keyboard::S)) { pipeline[i].move(0.f, -2.f); }
 		else if (Keyboard::isKeyPressed(Keyboard::D)) { pipeline[i].move(-2.f, 0.f); }
-	}
-	if (pipeline.size() == 3) {
-		pipeline.erase(pipeline.begin());
-		addPipe();
-		std::cout << pipeline.size() << "\n";
 	}
 	if (Keyboard::isKeyPressed(Keyboard::E)) addPipe();
 }
