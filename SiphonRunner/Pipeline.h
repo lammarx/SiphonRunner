@@ -20,6 +20,8 @@ private:
 	Texture pipe02aTex;
 	Texture pipe01bTex;
 	Texture pipe02bTex;
+	Texture pipe02cTex;
+	Texture pipe02dTex;
 	Sprite pipe;
 	const float pipeSize = 200.f;
 	int direction = 0;
