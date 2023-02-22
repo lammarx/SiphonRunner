@@ -4,12 +4,19 @@ Player::Player() {
 	noseTex.loadFromFile("Resources\\nose.png");
 	nose.setTexture(noseTex);
 	nose.setOrigin(25.f, 25.f);
-	nose.setPosition(500.f, 100.f);
+	nose.setPosition(600.f, 200.f);
 	nose.setTexture(noseTex);
 }
 
-void Player::update() {
-
+void Player::update(std::vector<FloatRect> bnds) {
+	std::vector<FloatRect> bounds = bnds;
+	bool gameOver = false;
+	for (size_t i = 0; i < bounds.size(); i++) {
+		if (bounds[i].intersects(nose.getLocalBounds())) {
+			gameOver = true; break;
+		}
+	}
+	std::cout << gameOver << "\n";
 }
 
 void Player::move() {

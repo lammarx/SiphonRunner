@@ -16,7 +16,7 @@ void Pipeline::create() {
 }
 
 void Pipeline::addPipe() {
-	index = rand() % 10;
+	int index = rand() % 10;
 	
 	if (direction == 0) {
 		pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x, pipeline[pipeline.size() - 1].getPosition().y + pipeSize);
@@ -43,15 +43,24 @@ void Pipeline::addPipe() {
 }
 
 void Pipeline::update() {
-	for (int i = 0; i < pipeline.size(); i++) {
-		if (Keyboard::isKeyPressed(Keyboard::W)) { pipeline[i].move(0.f, 5.f); }
-		else if (Keyboard::isKeyPressed(Keyboard::A)) { pipeline[i].move(5.f, 0.f); }
-		else if (Keyboard::isKeyPressed(Keyboard::S)) { pipeline[i].move(0.f, -5.f); }
-		else if (Keyboard::isKeyPressed(Keyboard::D)) { pipeline[i].move(-5.f, 0.f); }
-	}
-	if (pipeline[0].getPosition().y < -200.f) {
+	if (pipeline[0].getPosition().y < -100.f || pipeline[0].getPosition().x < -100.f || pipeline[0].getPosition().x > 1700.f) {
 		pipeline.erase(pipeline.begin());
 		addPipe();
+	}
+}
+
+std::vector<FloatRect> Pipeline::getPipelineBounds() {
+	std::vector<FloatRect> bounds;
+	for (size_t i = 0; i < pipeline.size(); i++) {
+		bounds.push_back(pipeline[i].getGlobalBounds());
+	} return bounds;
+}
+
+void Pipeline::move(const int moveDirection) {
+	for (int i = 0; i < pipeline.size(); i++) {
+		if (moveDirection == 0) pipeline[i].move(0.f, -5.f);
+		else if (moveDirection == 1) pipeline[i].move(-5.f, 0.f);
+		else if (moveDirection == 2) pipeline[i].move(5.f, 0.f);
 	}
 }
 

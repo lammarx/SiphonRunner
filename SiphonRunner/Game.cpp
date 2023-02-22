@@ -22,18 +22,22 @@ int Game::pollEvent() {
 	Pipeline pipeline;
 	pipeline.create();
 
+	int moveDirection = 0;
+
 	while (window.isOpen()) {
 		while (window.pollEvent(event)) {
 			switch (event.type) {
 			case Event::Closed: window.close();
 			case Event::KeyPressed:
 				if (event.key.code == Keyboard::Escape) gamePause();
-				if (event.key.code == Keyboard::S) player.setDirection(0);
-				if (event.key.code == Keyboard::D) player.setDirection(1);
-				if (event.key.code == Keyboard::A) player.setDirection(2);
+				if (event.key.code == Keyboard::S) moveDirection = 0, player.setDirection(moveDirection);
+				if (event.key.code == Keyboard::D) moveDirection = 1, player.setDirection(moveDirection);
+				if (event.key.code == Keyboard::A) moveDirection = 2, player.setDirection(moveDirection);
 			}
 		}
+		pipeline.move(moveDirection);
 		pipeline.update();
+		player.update(pipeline.getPipelineBounds());
 		
 		window.clear();
 		pipeline.draw(window);

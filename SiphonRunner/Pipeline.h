@@ -13,6 +13,8 @@ public:
 	void create();
 	void addPipe();
 	void update();
+	std::vector<FloatRect> getPipelineBounds();
+	void move(const int moveDirection);
 	void draw(RenderWindow& gameWindow);
 private:
 	std::vector<Sprite> pipeline;
@@ -25,7 +27,6 @@ private:
 	Sprite pipe;
 	const float pipeSize = 200.f;
 	int direction = 0;
-	int index = 0;
 	const float pipeHeight = 200.f;
 	const float pipeWidth = 100.f;
 };
