@@ -15,9 +15,12 @@ public:
 	void update();
 	void draw(RenderWindow& gameWindow);
 private:
-	std::vector<RectangleShape> pipeline;
-	RectangleShape pipe;
-	RectangleShape pipeTurn;
+	std::vector<Sprite> pipeline;
+	Texture pipe01aTex;
+	Texture pipe02aTex;
+	Texture pipe01bTex;
+	Texture pipe02bTex;
+	Sprite pipe;
 	const float pipeSize = 200.f;
 	int direction = 0;
 	int index = 0;
