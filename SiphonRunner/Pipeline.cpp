@@ -49,7 +49,10 @@ void Pipeline::update() {
 		else if (Keyboard::isKeyPressed(Keyboard::S)) { pipeline[i].move(0.f, -5.f); }
 		else if (Keyboard::isKeyPressed(Keyboard::D)) { pipeline[i].move(-5.f, 0.f); }
 	}
-	if (Keyboard::isKeyPressed(Keyboard::E)) addPipe();
+	if (pipeline[0].getPosition().y < -200.f) {
+		pipeline.erase(pipeline.begin());
+		addPipe();
+	}
 }
 
 void Pipeline::draw(RenderWindow& window) {

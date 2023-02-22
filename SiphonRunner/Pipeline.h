@@ -26,7 +26,6 @@ private:
 	const float pipeSize = 200.f;
 	int direction = 0;
 	int index = 0;
-	float pipeAngle = 90.f;
 	const float pipeHeight = 200.f;
 	const float pipeWidth = 100.f;
 };

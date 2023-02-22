@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "GameMenu.h"
+#include "Player.h"
+#include "Dumpling.h"
 
 void Game::initWindow() {
 	videoMode.width = 1600;
@@ -16,6 +18,7 @@ int Game::pollEvent() {
 	gamePause();
 	gamePrologue();
 
+	Player player;
 	Pipeline pipeline;
 	pipeline.create();
 
@@ -25,12 +28,16 @@ int Game::pollEvent() {
 			case Event::Closed: window.close();
 			case Event::KeyPressed:
 				if (event.key.code == Keyboard::Escape) gamePause();
+				if (event.key.code == Keyboard::S) player.setDirection(0);
+				if (event.key.code == Keyboard::D) player.setDirection(1);
+				if (event.key.code == Keyboard::A) player.setDirection(2);
 			}
 		}
 		pipeline.update();
-
+		
 		window.clear();
 		pipeline.draw(window);
+		player.draw(window);
 		window.display();
 	}
 	return 0;

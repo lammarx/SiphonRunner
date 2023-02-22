@@ -86,8 +86,8 @@ int Game::buttonAbout() {
 	background.setTexture(backgroundTexture);
 	gameInfo.setFont(font);
 	gameInfo.setString(String("This is a game created specially for Stalevi by Begemotto.") + 
-					   String("You are playing as Gucci dog nose. You have to drop through siphon") +
-					   String("to save a dumpling that fall into siphon ways.") +
+					   String("\nYou are playing as Gucci dog nose. You have to drop through siphon") +
+					   String("\nto save a dumpling that fall into siphon ways.") +
 					   String("\nFor additional help or info, contact to Begemotto#5566"));
 	gameInfo.setPosition(800.f, 200.f);
 	gameInfo.setOrigin(gameInfo.getGlobalBounds().width / 2.f - 800.f, 0.f);
