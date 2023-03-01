@@ -11,7 +11,7 @@ void Pipeline::create() {
 	pipeline.push_back(pipe);
 	pipe.setOrigin(100.f, 100.f);
 	for (int i = 0; i < 10; i++) {
-		addPipe();
+		pipeline.push_back(pipe);
 	}
 }
 
