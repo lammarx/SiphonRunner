@@ -2,6 +2,7 @@
 #include "GameMenu.h"
 #include "Player.h"
 #include "Dumpling.h"
+#include "GameBackground.h"
 
 void Game::initWindow() {
 	videoMode.width = 1600;
@@ -19,6 +20,7 @@ int Game::pollEvent() {
 	gamePrologue();
 
 	Player player;
+	GameBackground gameBackground;
 	Pipeline pipeline;
 	pipeline.create();
 
