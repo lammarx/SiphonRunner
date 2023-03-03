@@ -10,8 +10,11 @@ void Pipeline::create() {
 	pipe.setPosition(800.f, 0.f);
 	pipeline.push_back(pipe);
 	pipe.setOrigin(100.f, 100.f);
-	for (int i = 0; i < 10; i++) {
+	for (size_t i = 0; i < 10; i++) {
 		pipeline.push_back(pipe);
+	}
+	for (size_t i = 0; i < 10; i++) {
+		addPipe();
 	}
 }
 
@@ -25,13 +28,27 @@ void Pipeline::addPipe() {
 	else if (direction == 1) {
 		pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x + pipeSize, pipeline[pipeline.size() - 1].getPosition().y);
 		pipe.setTexture(pipe01aTex);
+		indexList.push_back(direction);
 	}
 	else if (direction == 2) {
 		pipe.setPosition(pipeline[pipeline.size() - 1].getPosition().x - pipeSize, pipeline[pipeline.size() - 1].getPosition().y);
 		pipe.setTexture(pipe01aTex);
+		indexList.push_back(direction);
 	}
-	
-	if (index > 5) {
+	bool sameRow = false;
+	if (indexList.size() >= 3) {
+		for (size_t i = 0; i < indexList.size(); i++) {
+			if (indexList[0] == indexList[i]) {
+				sameRow = true;
+			}
+			else {
+				sameRow = false;
+				break;
+			}
+		}
+	}
+	std::cout << sameRow << "\n";
+	if (index > 5 || sameRow) {
 		int temp = direction;
 		do { direction = rand() % 3; } while ((temp == 1 && direction == 2) || (temp == 2 && direction == 1) || direction == temp);
 		if (temp == 0 && direction == 1) { pipe.setTexture(pipe02aTex); }
@@ -42,8 +59,8 @@ void Pipeline::addPipe() {
 	pipeline.push_back(pipe);
 }
 
-void Pipeline::update() {
-	if (pipeline[0].getPosition().y < -100.f || pipeline[0].getPosition().x < -100.f || pipeline[0].getPosition().x > 1700.f) {
+void Pipeline::update(GameBackground& gameBackground) {
+	if (pipeline[0].getPosition().y < -250.f) {
 		pipeline.erase(pipeline.begin());
 		addPipe();
 	}

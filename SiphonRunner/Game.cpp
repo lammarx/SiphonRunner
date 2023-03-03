@@ -37,11 +37,13 @@ int Game::pollEvent() {
 				if (event.key.code == Keyboard::A) moveDirection = 2, player.setDirection(moveDirection);
 			}
 		}
+		gameBackground.update();
 		pipeline.move(moveDirection);
-		pipeline.update();
+		pipeline.update(gameBackground);
 		player.update(pipeline.getPipelineBounds());
 		
 		window.clear();
+		gameBackground.draw(window);
 		pipeline.draw(window);
 		player.draw(window);
 		window.display();

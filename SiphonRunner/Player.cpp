@@ -16,7 +16,6 @@ void Player::update(std::vector<FloatRect> bnds) {
 			gameOver = true; break;
 		}
 	}
-	std::cout << gameOver << "\n";
 }
 
 void Player::move() {

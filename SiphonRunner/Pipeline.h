@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
+#include "GameBackground.h"
 
 using namespace sf;
 
@@ -12,12 +13,15 @@ public:
 	Pipeline(){};
 	void create();
 	void addPipe();
-	void update();
+	void update(GameBackground& gameBackground);
 	std::vector<FloatRect> getPipelineBounds();
 	void move(const int moveDirection);
 	void draw(RenderWindow& gameWindow);
 private:
 	std::vector<Sprite> pipeline;
+	std::vector<int> indexList;
+	Clock clock;
+	Time time;
 	Texture pipe01aTex;
 	Texture pipe02aTex;
 	Texture pipe01bTex;
